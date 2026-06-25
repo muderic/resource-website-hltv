@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hltv · 日常查询与对照手册</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1f2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      padding: 0.9rem 1.8rem;
+      border: 1px solid #e6e9ee;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-brand {
+      font-weight: 550;
+      font-size: 1.3rem;
+      letter-spacing: 0.3px;
+      color: #1f2a3a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3b4b62;
+      font-size: 0.95rem;
+      font-weight: 430;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #0d1b2a;
+      border-bottom-color: #8b9bb5;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: white;
+      border-radius: 18px;
+      border: 1px solid #e2e6ed;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.04);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.8rem;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    }
+
+    /* hero 区简洁 */
+    .hero {
+      background: white;
+      border-radius: 18px;
+      border: 1px solid #e2e6ed;
+      padding: 2.8rem 2.2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 460;
+      letter-spacing: -0.3px;
+      margin-bottom: 1.2rem;
+      color: #121926;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #2d3b4f;
+      max-width: 78%;
+    }
+
+    @media (max-width: 640px) {
+      .hero p { max-width: 100%; }
+      .hero h1 { font-size: 1.7rem; }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 460;
+      margin-bottom: 1.3rem;
+      letter-spacing: -0.2px;
+      color: #182230;
+      border-left: 3px solid #9aabbf;
+      padding-left: 1.1rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 490;
+      margin-bottom: 0.5rem;
+      color: #1f2e44;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid #e2e6ed;
+      padding: 1.6rem 1.5rem 1.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #2c3b50;
+      margin-top: 0.3rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid #edf0f5;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 510;
+      margin-bottom: 0.25rem;
+      color: #1a293e;
+    }
+
+    .faq-a {
+      color: #36475f;
+      font-size: 0.95rem;
+    }
+
+    .link-sentence {
+      background: #f8faff;
+      border-radius: 12px;
+      padding: 1.1rem 1.6rem;
+      margin: 1.6rem 0 0.8rem;
+      border-left: 3px solid #a1b3cb;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .link-sentence a {
+      color: #1f3a6b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #b7c4d9;
+    }
+
+    .link-sentence a:hover {
+      color: #0b1e3c;
+      border-bottom-style: solid;
+    }
+
+    .footnote {
+      margin-top: 1rem;
+      color: #55677e;
+      font-size: 0.9rem;
+      text-align: center;
+      border-top: 1px solid #dce1e9;
+      padding-top: 1.6rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #dde2ea;
+      margin: 1.2rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .nav { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      .nav-links { gap: 1.2rem; margin-top: 0.2rem; }
+      .card, .hero { padding: 1.4rem 1.2rem; }
+      .grid-3 { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 顶部导航 -->
+    <nav class="nav">
+      <span class="nav-brand">HLTV · 资料对照</span>
+      <div class="nav-links">
+        <a href="#intro">概览</a>
+        <a href="#scenes">日常场景</a>
+        <a href="#faq">常见说明</a>
+      </div>
+    </nav>
+
+    <!-- hero 区域 -->
+    <div class="hero" id="intro">
+      <h1>查询、对照、延伸阅读</h1>
+      <p>这里整理了一组关于 <strong>hltv</strong> 的轻量信息，适合快速浏览、日常对照与场景回溯。页面内容取自公共资料库与常见用法，保持平实、可查证。</p>
+    </div>
+
+    <!-- 核心介绍 + 链接嵌入句子 -->
+    <div class="card">
+      <h2>关于 hltv</h2>
+      <p>通常所提到的 hltv 是指一个专注于赛事数据、队伍记录与选手统计的信息平台。在日常使用中，人们会利用 <a href="https://website-hltv.com">hltv</a> 查询近期对战记录、选手历史数据以及赛事时间表。它并非单一来源，而是聚合了多个公开数据流，经过整理后提供相对结构化的浏览方式。</p>
+      <div class="link-sentence">
+        📎 如果需要直接检索选手或战队的基础数据，可以前往 <a href="https://website-hltv.com">hltv</a> 的数据库页面，那里按赛季、地图和比赛类型做了分类索引，便于快速定位。
+      </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 id="scenes">常见使用场景</h2>
+    <div class="grid-3">
+      <div class="scene-card">
+        <h3>📊 日常查询</h3>
+        <p>查看近一周赛事结果、选手个人rating变化、地图胜率。很多用户习惯在赛前快速核对两支队伍的过往交手记录，这些在 <strong>hltv</strong> 中都有对应的筛选条目。</p>
+      </div>
+      <div class="scene-card">
+        <h3>📋 对照分析</h3>
+        <p>将不同选手同一地图的数据并列比较，或者对比某战队在数个赛事中的状态起伏。通过选择时间段和赛事级别，可以生成对照视图，适合做简略的趋势判断。</p>
+      </div>
+      <div class="scene-card">
+        <h3>🔍 延伸阅读</h3>
+        <p>部分赛事页面会附带简要的复盘描述、阵容变更记录以及采访摘录，适合想要了解比赛背后信息的使用者。这些内容通常以短评或数据附注的形式出现。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明（FAQ摘要风格） -->
+    <div class="card" id="faq">
+      <h2>常见说明 · 几点备忘</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">数据更新频率？</div>
+        <div class="faq-a">赛事结束后数据通常在数小时内入库，个别详细指标（如选手第一轮对枪胜率）可能需要1–2天完成标注。建议以赛事结束48小时后的数据为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">不同赛事的数据权重一样吗？</div>
+        <div class="faq-a">平台内部对不同级别赛事有所区分，大型锦标赛的统计权重更高。在对比选手rating时，可以留意赛事标签（S级、A级等）。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">历史数据保存范围？</div>
+        <div class="faq-a">一般保留近3–4年的主要赛事数据，更早期的记录部分收录、部分以摘要形式存在。如需查看非常久远的对局，可能需要查找第三方存档。</div>
+      </div>
+
+      <hr>
+      <p style="font-size:0.92rem; color:#415570;">若需要更细致的筛选条件或自定义对比，可以结合平台自带的过滤器与日期选择器，多数页面在顶部栏目中有对应入口。</p>
+    </div>
+
+    <!-- 额外提示卡片 -->
+    <div class="card" style="padding: 1.4rem 1.8rem; background: #fafcfe;">
+      <p style="display: flex; gap: 0.6rem; align-items: flex-start;">
+        <span style="font-size:1.2rem;">📌</span>
+        <span>页面中提到的所有数据均来源于公开可查的记录，使用时建议交叉核对。部分历史统计口径可能因赛事规则调整而略有变化，属正常情况。</span>
+      </p>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footnote">
+      基于公开资料整理 · 日常参考页
+    </div>
+
+  </div>
+  <!-- 创作种子关联：04222b2bd5753012（仅用于变化） -->
+</body>
+</html>
